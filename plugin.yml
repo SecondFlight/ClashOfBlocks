@@ -1,0 +1,10 @@
+name: ClashOfBlocks
+version: 1.0
+author: Aperx
+description: A Clash of Clans, a popular iOS/Android, inspired plugin.
+main: com.github.cob.ClashOfBlocks
+
+commands:
+  help:
+    permission: none.none
+ 
