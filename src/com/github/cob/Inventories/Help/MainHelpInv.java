@@ -1,4 +1,4 @@
-package com.github.cob.Inventories;
+package com.github.cob.Inventories.Help;
 
 import java.util.Arrays;
 
@@ -9,7 +9,7 @@ import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
-public class HelpInventory {
+public class MainHelpInv {
 	
 	public static Inventory HelpMenu = Bukkit.createInventory(null, 9, ChatColor.GOLD+ ChatColor.BOLD.toString()+"COB: " +ChatColor.RESET + ChatColor.DARK_GREEN +"Help Menu");
 
