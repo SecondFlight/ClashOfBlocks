@@ -5,7 +5,7 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-import com.github.cob.Inventories.HelpInventory;
+import com.github.cob.Inventories.Help.MainHelpInv;
 
 public class Testy implements CommandExecutor{
 
@@ -13,7 +13,7 @@ public class Testy implements CommandExecutor{
         Player p = (Player) sender;
 		
         if(cmd.getName().equalsIgnoreCase("help")){
-        	p.openInventory(HelpInventory.HelpMenu);
+        	p.openInventory(MainHelpInv.HelpMenu);
         }
         
         return false;
