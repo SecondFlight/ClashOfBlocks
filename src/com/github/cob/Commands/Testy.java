@@ -1,11 +1,11 @@
-package com.github.cob.Commands;
+package com.github.cob.commands;
 
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-import com.github.cob.Inventories.Help.MainHelpInv;
+import com.github.cob.inventories.help.MainHelpInv;
 
 public class Testy implements CommandExecutor{
 

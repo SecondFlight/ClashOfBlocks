@@ -1,4 +1,4 @@
-package com.github.cob.Listeners.InvListeners;
+package com.github.cob.listeners.inventory;
 
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
@@ -9,8 +9,8 @@ import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 
-import com.github.cob.Inventories.Help.AdminHelpInv;
-import com.github.cob.Inventories.Help.PlayerHelpInv;
+import com.github.cob.inventories.help.AdminHelpInv;
+import com.github.cob.inventories.help.PlayerHelpInv;
 
 public class MainHelpInvLis implements Listener{
 	

@@ -1,4 +1,4 @@
-package com.github.cob.Inventories.Help;
+package com.github.cob.inventories.help;
 
 import java.util.Arrays;
 
