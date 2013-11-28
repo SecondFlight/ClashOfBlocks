@@ -1,6 +1,6 @@
 package com.github.cob.command;
 
-import com.not2excel.rpg.utils.ReflectionUtils;
+import com.github.cob.utils.ReflectionUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandMap;
