@@ -39,42 +39,42 @@ resources:
     storage_cap: 50000
     hp: 1500
     cost: 12000
-    build_time: 900
+    build_time: 14400
     exp_gained: 120
     th_req: 3
   GOLD_STORAGE_7:
     storage_cap: 100000
     hp: 1650
     cost: 25000
-    build_time: 900
+    build_time: 21660
     exp_gained: 146
     th_req: 4
   GOLD_STORAGE_8:
     storage_cap: 250000
     hp: 1740
     cost: 50000
-    build_time: 900
+    build_time: 28800
     exp_gained: 169
     th_req: 4
   GOLD_STORAGE_9:
     storage_cap: 500000
     hp: 1820
     cost: 100000
-    build_time: 900
+    build_time: 43200
     exp_gained: 207
     th_req: 5
   GOLD_STORAGE_10:
     storage_cap: 1000000
     hp: 1920
     cost: 250000
-    build_time: 900
+    build_time: 86400
     exp_gained: 293
     th_req: 6
   GOLD_STORAGE_11:
     storage_cap: 2000000
     hp: 2016
     cost: 500000
-    build_time: 900
+    build_time: 172800
     exp_gained: 415
     th_req: 7
 army:
