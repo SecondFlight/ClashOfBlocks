@@ -1,4 +1,4 @@
-package com.github.cob.Listeners.InvListeners;
+package com.github.cob.listeners.inventory;
 
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
@@ -9,9 +9,9 @@ import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 
-import com.github.cob.Inventories.PluginMenu;
+import com.github.cob.inventories.PluginMenu;
 
-public class PlayerHelpInvLis implements Listener {
+public class AdminHelpInvLis implements Listener {
 	
 	@EventHandler
 	public void ExitInventory(InventoryClickEvent event) {
@@ -19,7 +19,7 @@ public class PlayerHelpInvLis implements Listener {
 	ItemStack clicked = event.getCurrentItem(); 
 	Inventory inventory = event.getInventory(); 
 	
-	if (inventory.getName().equals(ChatColor.GOLD+ ChatColor.BOLD.toString()+"COB: " +ChatColor.RESET + ChatColor.DARK_GREEN +"Player Help")) {
+	if (inventory.getName().equals(ChatColor.GOLD+ ChatColor.BOLD.toString()+"COB: " +ChatColor.RESET + ChatColor.DARK_GREEN +"Admin Help")) {
 		if (clicked.getType() == Material.LAVA_BUCKET) { 
 			if(clicked.getItemMeta().getDisplayName().equals(ChatColor.DARK_RED+"Exit")){
 			event.setCancelled(true); 
@@ -35,7 +35,7 @@ public class PlayerHelpInvLis implements Listener {
 	ItemStack clicked = event.getCurrentItem(); 
 	Inventory inventory = event.getInventory(); 
 	
-	if (inventory.getName().equals(ChatColor.GOLD+ ChatColor.BOLD.toString()+"COB: " +ChatColor.RESET + ChatColor.DARK_GREEN +"Player Help")) {
+	if (inventory.getName().equals(ChatColor.GOLD+ ChatColor.BOLD.toString()+"COB: " +ChatColor.RESET + ChatColor.DARK_GREEN +"Admin Help")) {
 		if (clicked.getType() == Material.BOOK) { 
 			if(clicked.getItemMeta().getDisplayName().equals(ChatColor.DARK_GREEN+"Plugin Details")){
 			event.setCancelled(true); 

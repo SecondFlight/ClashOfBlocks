@@ -1,4 +1,4 @@
-package com.github.cob.Inventories;
+package com.github.cob.inventories;
 
 import java.util.ArrayList;
 import java.util.Arrays;

@@ -1,4 +1,4 @@
-package com.github.cob.Listeners.InvListeners;
+package com.github.cob.listeners.inventory;
 
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
