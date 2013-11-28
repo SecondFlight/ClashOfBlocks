@@ -12,6 +12,8 @@ import com.github.cob.listeners.inventory.AdminHelpInvLis;
 import com.github.cob.listeners.inventory.MainHelpInvLis;
 import com.github.cob.listeners.inventory.PlayerHelpInvLis;
 import com.github.cob.listeners.inventory.PluginDetailsInvLis;
+import org.bukkit.command.Command;
+import org.bukkit.command.CommandSender;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -63,7 +65,12 @@ public class ClashOfBlocks extends JavaPlugin {
 	public void onDisable(){
 		this.playerData.savePlayers(this.gold, this.elixir, this.darkElixir, this.gems);
 	}
-	
+
+    @Override
+    public boolean onCommand(CommandSender commandSender, Command command, String name, String[] args)
+    {
+        return commandManager.handleCommand(commandSender, command, name, args);
+    }
 	
 	public static ClashOfBlocks getInstance()
 	{
