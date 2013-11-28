@@ -1,31 +1,33 @@
 package com.github.cob;
 
-import java.io.File;
-
-import org.bukkit.plugin.PluginManager;
-import org.bukkit.plugin.java.JavaPlugin;
-
+import com.github.cob.command.CommandManager;
 import com.github.cob.commands.Testy;
 import com.github.cob.config.PlayerData;
-import com.github.cob.currency.Gold;
 import com.github.cob.currency.DarkElixir;
 import com.github.cob.currency.Elixir;
 import com.github.cob.currency.Gems;
+import com.github.cob.currency.Gold;
 import com.github.cob.listeners.FirstJoinListener;
 import com.github.cob.listeners.inventory.AdminHelpInvLis;
 import com.github.cob.listeners.inventory.MainHelpInvLis;
 import com.github.cob.listeners.inventory.PlayerHelpInvLis;
 import com.github.cob.listeners.inventory.PluginDetailsInvLis;
+import org.bukkit.plugin.PluginManager;
+import org.bukkit.plugin.java.JavaPlugin;
+
+import java.io.File;
 
 
 public class ClashOfBlocks extends JavaPlugin {
 	private static ClashOfBlocks instance;
+    private CommandManager commandManager;
 	
 	private final MainHelpInvLis MHIL = new MainHelpInvLis();
 	private final AdminHelpInvLis AHIL = new AdminHelpInvLis();
 	private final PlayerHelpInvLis PHIL = new PlayerHelpInvLis();
 	private final PluginDetailsInvLis PDIL = new PluginDetailsInvLis();
 	private final FirstJoinListener FJL = new FirstJoinListener();
+
 	private PlayerData playerData = new PlayerData();
 	private Gold gold = new Gold();
 	private DarkElixir darkElixir = new DarkElixir();
@@ -48,7 +50,12 @@ public class ClashOfBlocks extends JavaPlugin {
 		pm.registerEvents(PHIL, this);
 		pm.registerEvents(PDIL, this);
 		pm.registerEvents(FJL, this);
-		getCommand("help").setExecutor(new Testy());
+
+        //register the commands from different objects
+        commandManager = new CommandManager(this);
+        commandManager.registerCommands(new Testy());
+        commandManager.registerHelp();
+
 		this.playerData.loadPlayers(this.gold, this.elixir, this.darkElixir, this.gems);
 		this.getServer().getScheduler().scheduleSyncRepeatingTask(this, new PlayerSaver(this.gold, this.elixir, this.darkElixir, this.gems), 0, (this.getConfig().getInt("general.save-interval") * 20));
 	}
@@ -98,4 +105,10 @@ public class ClashOfBlocks extends JavaPlugin {
 		return this.gems;
 	}
 
+    public CommandManager getCommandManager()
+    {
+        if (commandManager == null)
+        { return new CommandManager(this); }
+        return commandManager;
+    }
 }

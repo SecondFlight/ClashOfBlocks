@@ -1,25 +1,18 @@
 package com.github.cob.commands;
 
-import org.bukkit.command.Command;
-import org.bukkit.command.CommandExecutor;
-import org.bukkit.command.CommandSender;
+import com.github.cob.command.CommandArguments;
+import com.github.cob.command.CommandHandler;
+import com.github.cob.inventories.help.MainHelpInv;
 import org.bukkit.entity.Player;
 
-import com.github.cob.inventories.help.MainHelpInv;
-
-public class Testy implements CommandExecutor{
-
-	public boolean onCommand(CommandSender sender, Command cmd, String CommandLabel, String[] args){
-        Player p = (Player) sender;
-		
-        if(cmd.getName().equalsIgnoreCase("help")){
-        	p.openInventory(MainHelpInv.HelpMenu);
-        }
-        
-        return false;
-        
-	}
-	
-	
-
+public class Testy
+{
+    @CommandHandler(name = "help")
+    public void helpCommand(CommandArguments args)
+    {
+        Player p = args.getPlayer();
+        if (p == null)
+        { return; }
+        p.openInventory(MainHelpInv.HelpMenu);
+    }
 }
