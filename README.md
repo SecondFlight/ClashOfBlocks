@@ -1,3 +1,3 @@
 ClashOfBlocks
 =============
-A Clash of Clans inspired, Bukkit Plugin!
+A Clash of Clans inspired Bukkit plugin!
