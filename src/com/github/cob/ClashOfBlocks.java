@@ -8,10 +8,15 @@ import com.github.cob.currency.Elixir;
 import com.github.cob.currency.Gems;
 import com.github.cob.currency.Gold;
 import com.github.cob.listeners.FirstJoinListener;
-import com.github.cob.listeners.inventory.AdminHelpInvLis;
-import com.github.cob.listeners.inventory.MainHelpInvLis;
-import com.github.cob.listeners.inventory.PlayerHelpInvLis;
-import com.github.cob.listeners.inventory.PluginDetailsInvLis;
+import com.github.cob.listeners.MenuClickListener;
+//import com.github.cob.listeners.inventory.AdminHelpInvLis;
+//import com.github.cob.listeners.inventory.MainHelpInvLis;
+//import com.github.cob.listeners.inventory.PlayerHelpInvLis;
+//import com.github.cob.listeners.inventory.PluginDetailsInvLis;
+import com.github.cob.utils.InventoryManager;
+import com.github.cob.utils.PlayerSaver;
+import com.github.cob.enums.EnumInventories;
+
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.plugin.PluginManager;
@@ -23,12 +28,13 @@ import java.io.File;
 public class ClashOfBlocks extends JavaPlugin {
 	private static ClashOfBlocks instance;
     private CommandManager commandManager;
+    private InventoryManager inventoryManager;
 	
-	private final MainHelpInvLis MHIL = new MainHelpInvLis();
-	private final AdminHelpInvLis AHIL = new AdminHelpInvLis();
-	private final PlayerHelpInvLis PHIL = new PlayerHelpInvLis();
-	private final PluginDetailsInvLis PDIL = new PluginDetailsInvLis();
-	private final FirstJoinListener FJL = new FirstJoinListener();
+	//private final MainHelpInvLis MHIL = new MainHelpInvLis();
+	//private final AdminHelpInvLis AHIL = new AdminHelpInvLis();
+	//private final PlayerHelpInvLis PHIL = new PlayerHelpInvLis();
+	//private final PluginDetailsInvLis PDIL = new PluginDetailsInvLis();
+	//private final FirstJoinListener FJL = new FirstJoinListener();
 
 	private PlayerData playerData = new PlayerData();
 	private Gold gold = new Gold();
@@ -47,16 +53,19 @@ public class ClashOfBlocks extends JavaPlugin {
 		
 		this.loadConfig();
 		PluginManager pm = getServer().getPluginManager();
-		pm.registerEvents(MHIL, this);
-		pm.registerEvents(AHIL, this);
-		pm.registerEvents(PHIL, this);
-		pm.registerEvents(PDIL, this);
-		pm.registerEvents(FJL, this);
+		//pm.registerEvents(MHIL, this);
+		//pm.registerEvents(AHIL, this);
+		//pm.registerEvents(PHIL, this);
+		//pm.registerEvents(PDIL, this);
+		pm.registerEvents(new MenuClickListener(), this);
+		pm.registerEvents(new FirstJoinListener(), this);
 
         //register the commands from different objects
-        commandManager = new CommandManager(this);
-        commandManager.registerCommands(new Testy());
-        commandManager.registerHelp();
+		this.inventoryManager = new InventoryManager();
+		EnumInventories.loadInventories();
+        this.commandManager = new CommandManager(this);
+        this.commandManager.registerCommands(new Testy());
+        this.commandManager.registerHelp();
 
 		this.playerData.loadPlayers(this.gold, this.elixir, this.darkElixir, this.gems);
 		this.getServer().getScheduler().scheduleSyncRepeatingTask(this, new PlayerSaver(this.gold, this.elixir, this.darkElixir, this.gems), 0, (this.getConfig().getInt("general.save-interval") * 20));
@@ -69,7 +78,7 @@ public class ClashOfBlocks extends JavaPlugin {
     @Override
     public boolean onCommand(CommandSender commandSender, Command command, String name, String[] args)
     {
-        return commandManager.handleCommand(commandSender, command, name, args);
+        return this.commandManager.handleCommand(commandSender, command, name, args);
     }
 	
 	public static ClashOfBlocks getInstance()
@@ -86,14 +95,24 @@ public class ClashOfBlocks extends JavaPlugin {
 	private void loadConfig() {
 		if (!(new File(this.getDataFolder(), "plugin.yml")).exists()) {
 			for (String[] defaultSet : this.defaultConfigValues) {
-				this.getConfig().set(defaultSet[0], defaultSet[1]);
+				if (isInteger(defaultSet[1]))
+					this.getConfig().set(defaultSet[0], Integer.parseInt(defaultSet[1]));
+				else
+					this.getConfig().set(defaultSet[0], defaultSet[1]);
 			}
 			this.saveConfig();
 		}
+		if ((!this.getConfig().contains("general.save-interval")) || this.getConfig().getInt("general.save-interval") < 60)
+			this.getConfig().set("general.save-interval", 300);
+		this.saveConfig();
 	}
 	
 	public PlayerData getPlayerData() {
 		return this.playerData;
+	}
+	
+	public boolean isInteger(String str) {
+	    return str.matches("^-?[0-9]+(\\.[0-9]+)?$");
 	}
 	
 	public Gold getGold() {
@@ -117,5 +136,9 @@ public class ClashOfBlocks extends JavaPlugin {
         if (commandManager == null)
         { return new CommandManager(this); }
         return commandManager;
+    }
+    
+    public InventoryManager getInventoryManager() {
+    	return this.inventoryManager;
     }
 }

@@ -2,7 +2,8 @@ package com.github.cob.commands;
 
 import com.github.cob.command.CommandArguments;
 import com.github.cob.command.CommandHandler;
-import com.github.cob.inventories.help.MainHelpInv;
+import com.github.cob.enums.EnumInventories;
+
 import org.bukkit.entity.Player;
 
 public class Testy
@@ -13,6 +14,6 @@ public class Testy
         Player p = args.getPlayer();
         if (p == null)
         { return; }
-        p.openInventory(MainHelpInv.HelpMenu);
+        p.openInventory(EnumInventories.MAIN_HELP.getInventory().getInventory());
     }
 }

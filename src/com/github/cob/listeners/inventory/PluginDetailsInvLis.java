@@ -9,6 +9,8 @@ import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 
+import com.github.cob.enums.EnumInventories;
+
 public class PluginDetailsInvLis implements Listener{
 	
 	@EventHandler
@@ -17,10 +19,14 @@ public class PluginDetailsInvLis implements Listener{
 	ItemStack clicked = event.getCurrentItem(); 
 	Inventory inventory = event.getInventory(); 
 	
-	if (inventory.getName().equals(ChatColor.GOLD+ ChatColor.BOLD.toString()+"COB: " +ChatColor.RESET + ChatColor.DARK_GREEN +"Plugin Details")) {
+	if (EnumInventories.PLUGIN_MENU.getInventory().isInventory(inventory)) {
+		event.setCancelled(true);
+		if (clicked == null) {
+			event.getWhoClicked().closeInventory();
+			return;
+		}
 		if (clicked.getType() == Material.LAVA_BUCKET) { 
 			if(clicked.getItemMeta().getDisplayName().equals(ChatColor.DARK_RED+"Exit")){
-			event.setCancelled(true); 
 			player.closeInventory(); 
 				}
 			}
@@ -32,10 +38,14 @@ public class PluginDetailsInvLis implements Listener{
 		ItemStack clicked = event.getCurrentItem(); 
 		Inventory inventory = event.getInventory(); 
 		
-		if (inventory.getName().equals(ChatColor.GOLD+ ChatColor.BOLD.toString()+"COB: " +ChatColor.RESET + ChatColor.DARK_GREEN +"Plugin Details")) {
+		if (EnumInventories.PLUGIN_MENU.getInventory().isInventory(inventory)) {
+			event.setCancelled(true);
+			if (clicked == null) {
+				event.getWhoClicked().closeInventory();
+				return;
+			}
 			if (clicked.getType() == Material.BOOK) { 
 				if(clicked.getItemMeta().getDisplayName().equals(ChatColor.DARK_RED+ChatColor.BOLD.toString()+"Author")){
-				event.setCancelled(true); 
 				}
 			}
 		}	
@@ -46,10 +56,10 @@ public class PluginDetailsInvLis implements Listener{
 		ItemStack clicked = event.getCurrentItem(); 
 		Inventory inventory = event.getInventory(); 
 		
-		if (inventory.getName().equals(ChatColor.GOLD+ ChatColor.BOLD.toString()+"COB: " +ChatColor.RESET + ChatColor.DARK_GREEN +"Plugin Details")) {
+		if (EnumInventories.PLUGIN_MENU.getInventory().isInventory(inventory)) {
+			event.setCancelled(true);
 			if (clicked.getType() == Material.PAPER) { 
 				if(clicked.getItemMeta().getDisplayName().equals(ChatColor.AQUA+ChatColor.BOLD.toString()+"Developers")){
-				event.setCancelled(true); 
 				}
 			}
 		}	
@@ -60,10 +70,10 @@ public class PluginDetailsInvLis implements Listener{
 		ItemStack clicked = event.getCurrentItem(); 
 		Inventory inventory = event.getInventory(); 
 		
-		if (inventory.getName().equals(ChatColor.GOLD+ ChatColor.BOLD.toString()+"COB: " +ChatColor.RESET + ChatColor.DARK_GREEN +"Plugin Details")) {
+		if (EnumInventories.PLUGIN_MENU.getInventory().isInventory(inventory)) {
+			event.setCancelled(true);
 			if (clicked.getType() == Material.BOOK_AND_QUILL) { 
 				if(clicked.getItemMeta().getDisplayName().equals(ChatColor.DARK_GREEN+ChatColor.BOLD.toString()+"Plugin Details")){
-				event.setCancelled(true); 
 				}
 			}
 		}	
