@@ -8,8 +8,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
-
-import com.github.cob.inventories.PluginMenu;
+import com.github.cob.enums.EnumInventories;
 
 public class PlayerHelpInvLis implements Listener {
 	
@@ -19,10 +18,14 @@ public class PlayerHelpInvLis implements Listener {
 	ItemStack clicked = event.getCurrentItem(); 
 	Inventory inventory = event.getInventory(); 
 	
-	if (inventory.getName().equals(ChatColor.GOLD+ ChatColor.BOLD.toString()+"COB: " +ChatColor.RESET + ChatColor.DARK_GREEN +"Player Help")) {
+	if (EnumInventories.PLAYER_HELP.getInventory().isInventory(inventory)) {
+		event.setCancelled(true);
+		if (clicked == null) {
+			event.getWhoClicked().closeInventory();
+			return;
+		}
 		if (clicked.getType() == Material.LAVA_BUCKET) { 
 			if(clicked.getItemMeta().getDisplayName().equals(ChatColor.DARK_RED+"Exit")){
-			event.setCancelled(true); 
 			player.closeInventory(); 
 				}
 			}
@@ -35,11 +38,15 @@ public class PlayerHelpInvLis implements Listener {
 	ItemStack clicked = event.getCurrentItem(); 
 	Inventory inventory = event.getInventory(); 
 	
-	if (inventory.getName().equals(ChatColor.GOLD+ ChatColor.BOLD.toString()+"COB: " +ChatColor.RESET + ChatColor.DARK_GREEN +"Player Help")) {
+	if (EnumInventories.PLAYER_HELP.getInventory().isInventory(inventory)) {
+		event.setCancelled(true);
+		if (clicked == null) {
+			event.getWhoClicked().closeInventory();
+			return;
+		}
 		if (clicked.getType() == Material.BOOK) { 
 			if(clicked.getItemMeta().getDisplayName().equals(ChatColor.DARK_GREEN+"Plugin Details")){
-			event.setCancelled(true); 
-			player.openInventory(PluginMenu.PluginMenu);
+			player.openInventory(EnumInventories.PLAYER_HELP.getInventory().getInventory());
 				}
 			}
 		}
