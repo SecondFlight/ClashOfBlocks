@@ -4,7 +4,6 @@ import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.event.inventory.InventoryClickEvent;
 
-import com.github.cob.enums.EnumInventories;
 import com.github.cob.inventories.MenuItem;
 
 public class ItemBuildings extends MenuItem {
