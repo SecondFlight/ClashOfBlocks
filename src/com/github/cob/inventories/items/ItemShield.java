@@ -4,6 +4,7 @@ import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.event.inventory.InventoryClickEvent;
 
+import com.github.cob.enums.EnumInventories;
 import com.github.cob.inventories.MenuItem;
 
 public class ItemShield extends MenuItem {
@@ -16,9 +17,9 @@ public class ItemShield extends MenuItem {
 	}
 	
 	public void onClick(InventoryClickEvent event) {
-		//event.getWhoClicked().closeInventory();
-		//event.getWhoClicked().openInventory(EnumInventories.Shield_MENU.getInventory().getInventory());
-		//Implement opening of Players shield menu
+		event.getWhoClicked().closeInventory();
+		event.getWhoClicked().openInventory(EnumInventories.SHIELD_MENU.getInventory().getInventory());
+		
 	}  
 
 }

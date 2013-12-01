@@ -10,7 +10,7 @@ public class ItemBuildings extends MenuItem {
 	
 	public ItemBuildings() {
 		super(Material.BRICK);
-		this.setName(ChatColor.YELLOW.toString() + ChatColor.BOLD.toString() + "Authors");
+		this.setName(ChatColor.YELLOW.toString() + ChatColor.BOLD.toString() + "Buildings");
 		this.addLore(ChatColor.DARK_GREEN + "Click to Open your Buildings menu");
 					 
 	}
