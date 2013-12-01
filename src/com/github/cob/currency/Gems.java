@@ -6,19 +6,23 @@ import com.github.cob.api.COBAPI;
 
 public class Gems {
 	
-	private HashMap<String, Integer> gold = new HashMap<String, Integer>();
+	private HashMap<String, Integer> gems = new HashMap<String, Integer>();
 	
 	public HashMap<String, Integer> getGems() {
-		return this.gold;
+		return this.gems;
 	}
 	
 	public int getGems(String player) {
-		return (this.gold.containsKey(player) ? this.gold.get(player) : -1);
+		return (this.gems.containsKey(player) ? this.gems.get(player) : -1);
 	}
 	
 	public void setGems(String player, int gold) {
-		this.gold.put(player, gold);
+		this.gems.put(player, gold);
 		COBAPI.updateStats(player);
+	}
+	
+	public void minusGems(String player, int amount){
+		
 	}
 
 }

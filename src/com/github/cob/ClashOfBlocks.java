@@ -2,6 +2,7 @@ package com.github.cob;
 
 import com.github.cob.command.CommandManager;
 import com.github.cob.commands.Testy;
+import com.github.cob.commands.Testy2;
 import com.github.cob.config.PlayerData;
 import com.github.cob.currency.DarkElixir;
 import com.github.cob.currency.Elixir;
@@ -30,11 +31,7 @@ public class ClashOfBlocks extends JavaPlugin {
     private CommandManager commandManager;
     private InventoryManager inventoryManager;
 	
-	//private final MainHelpInvLis MHIL = new MainHelpInvLis();
-	//private final AdminHelpInvLis AHIL = new AdminHelpInvLis();
-	//private final PlayerHelpInvLis PHIL = new PlayerHelpInvLis();
-	//private final PluginDetailsInvLis PDIL = new PluginDetailsInvLis();
-	//private final FirstJoinListener FJL = new FirstJoinListener();
+
 
 	private PlayerData playerData = new PlayerData();
 	private Gold gold = new Gold();
@@ -53,10 +50,7 @@ public class ClashOfBlocks extends JavaPlugin {
 		
 		this.loadConfig();
 		PluginManager pm = getServer().getPluginManager();
-		//pm.registerEvents(MHIL, this);
-		//pm.registerEvents(AHIL, this);
-		//pm.registerEvents(PHIL, this);
-		//pm.registerEvents(PDIL, this);
+
 		pm.registerEvents(new MenuClickListener(), this);
 		pm.registerEvents(new FirstJoinListener(), this);
 
@@ -65,6 +59,7 @@ public class ClashOfBlocks extends JavaPlugin {
 		EnumInventories.loadInventories();
         this.commandManager = new CommandManager(this);
         this.commandManager.registerCommands(new Testy());
+        this.commandManager.registerCommands(new Testy2());
         this.commandManager.registerHelp();
 
 		this.playerData.loadPlayers(this.gold, this.elixir, this.darkElixir, this.gems);
