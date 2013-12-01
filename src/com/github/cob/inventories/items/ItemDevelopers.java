@@ -11,9 +11,10 @@ public class ItemDevelopers extends MenuItem {
 		super(Material.PAPER);
 		this.setName(ChatColor.AQUA.toString() + ChatColor.BOLD.toString() + "Developers");
 		this.addLore(ChatColor.RED  + "- Aperx",
-					 ChatColor.RED  + "- Stilldabomb",
-					 ChatColor.BLUE + "- Not2EXcel",
-					 ChatColor.BLUE + "- Mineu999");
+			     ChatColor.RED  + "- Stilldabomb",
+			     ChatColor.BLUE + "- Not2EXcel",
+			     ChatColor.BLUE + "- Mineu999",
+                             ChatColor.BLUE + "- Joseshooter");
 	}
 	
 }

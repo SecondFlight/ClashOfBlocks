@@ -154,5 +154,49 @@ resources:
     build_time: 172800
     exp_gained: 415
     th_req: 7
+  GOLD_MINE_1:
+    cost: 150
+    build_time: 60
+    exp_gained: 7
+    boost_cost: n/a
+    capacity: 500
+    prod_rate_phr: 200
+    hp: 400
+    time_to_fill: 9000
+    catch_up_point: n/a
+    th_req: 1
+  GOLD_MINE_2:
+    cost: 300
+    build_time: 300
+    exp_gained:17
+    boost_cost: n/a
+    capacity: 1000
+    prod_rate_phr: 400
+    hp: 450
+    time_to_fill: 9000
+    catch_up_point: 300
+    th_req: 1
+  GOLD_MINE_3:
+    cost: 700
+    build_time: 900
+    exp_gained: 30
+    boost_cost: n/a
+    capacity: 1500
+    prod_rate_phr: 600
+    hp: 500
+    time_to_fill: 9000
+    catch_up_point: 1800
+    th_req: 2
+  GOLD_MINE_4:
+    cost:1400
+    build_time: 3600
+    exp_gained: 60
+    boost_cost: n/a
+    capacity: 2500
+    prod_rate_phr: 800
+    hp: 550
+    time_to_fill: 11250
+    catch_up_point: 10800
+    th_req: 2
 army:
 decorations:
