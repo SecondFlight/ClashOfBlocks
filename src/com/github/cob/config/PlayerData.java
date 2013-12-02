@@ -40,13 +40,6 @@ public class PlayerData {
 	}
 	
 	public void loadPlayers(Gold gold, Elixir elixir, DarkElixir darkElixir, Gems gems) {
-		if (!(new File(ClashOfBlocks.getInstance().getDataFolder(), "players.yml")).exists()) {
-			this.$getPlayers().set("player.stilldabomb.gold", 1290);
-			this.$getPlayers().set("player.stilldabomb.elixir", 1290);
-			this.$getPlayers().set("player.stilldabomb.darkelixir", 1290);
-			this.$getPlayers().set("player.stilldabomb.gems", 1290);
-			this.$savePlayers();
-		}
 		ConfigurationSection sec = this.$getPlayers().getConfigurationSection("player");
 		for (String player : sec.getKeys(false)) {
 			if (player == null) System.out.println("Player was null");
@@ -73,6 +66,7 @@ public class PlayerData {
 		for (String player : gems.getGems().keySet()) {
 			this.$getPlayers().set("player." + player + ".gems", gems.getGems(player));
 		}
+		this.$savePlayers();
 	}
 	
 }
