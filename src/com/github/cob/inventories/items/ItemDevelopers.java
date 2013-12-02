@@ -14,7 +14,7 @@ public class ItemDevelopers extends MenuItem {
 			     ChatColor.RED  + "- Stilldabomb",
 			     ChatColor.BLUE + "- Not2EXcel",
 			     ChatColor.BLUE + "- Mineu999",
-                             ChatColor.BLUE + "- Joseshooter");
+                 ChatColor.BLUE + "- Joseshooter");
 	}
 	
 }
