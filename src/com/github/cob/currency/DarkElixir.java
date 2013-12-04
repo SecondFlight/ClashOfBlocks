@@ -2,6 +2,8 @@ package com.github.cob.currency;
 
 import java.util.HashMap;
 
+import org.bukkit.entity.Player;
+
 import com.github.cob.api.COBAPI;
 
 public class DarkElixir {
@@ -20,5 +22,12 @@ public class DarkElixir {
 		this.darkElixir.put(player, gold);
 		COBAPI.updateStats(player);
 	}
+	
+	 public void addDarkElixir(String player, int amount)
+	    {
+	        if(darkElixir.containsKey(player))
+	            darkElixir.put(player, darkElixir.get(player) + amount);
+	        COBAPI.updateStats(player);
+	    }
 
 }
