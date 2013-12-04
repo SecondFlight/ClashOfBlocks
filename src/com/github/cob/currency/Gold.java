@@ -20,5 +20,13 @@ public class Gold {
 		this.gold.put(player, gold);
 		COBAPI.updateStats(player);
 	}
+	
+	public void addGold(String player, int amount)
+    {
+        if(gold.containsKey(player))
+            gold.put(player, gold.get(player) + amount);
+        COBAPI.updateStats(player);
+    }
+
 
 }

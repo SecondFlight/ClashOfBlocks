@@ -36,7 +36,7 @@ public class COBAPI {
 		Server server = ClashOfBlocks.getInstance().getServer();
 		Objective objective = sb.registerNewObjective("ClashOfBlocks", "dummy");
 		objective.setDisplaySlot(DisplaySlot.SIDEBAR);
-		objective.setDisplayName("  Clash of Blocks  ");
+		objective.setDisplayName(ChatColor.GOLD+ChatColor.BOLD.toString()+"  Clash of Blocks  ");
 		String[] temp = new String[info.length];
 		int pos = 0;
 		
