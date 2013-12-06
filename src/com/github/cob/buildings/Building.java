@@ -13,6 +13,14 @@ public class Building {
 	private int exp_gained = 0;
 	private int th_req = 1;
 	
+	 public enum BuildingState { PLACED, BUILDING, FINISHED, LEVEL1, LEVEL2, LEVEL3, LEVEL4, LEVEL5, LEVEL6, LEVEL7, LEVEL8, LEVEL9, LEVEL10, LEVEL11; }
+	 
+	 protected BuildingState state = BuildingState.PLACED;
+	 
+	 public BuildingState getState() {
+		 return state;
+	 }
+	
 	public Building(String name) {
 		this.name = name;
 	}
