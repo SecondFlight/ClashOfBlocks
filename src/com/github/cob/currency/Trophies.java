@@ -20,5 +20,13 @@ public class Trophies {
 		this.trophies.put(player, trophies);
 		COBAPI.updateStats(player);
 	}
+	
+	public void addTrophies(String player, int amount)
+    {
+        if(trophies.containsKey(player))
+            trophies.put(player, trophies.get(player) + amount);
+        COBAPI.updateStats(player);
+    }
+
 
 }
