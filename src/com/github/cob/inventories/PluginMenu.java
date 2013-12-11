@@ -5,6 +5,7 @@ import com.github.cob.inventories.items.ItemAuthors;
 import com.github.cob.inventories.items.ItemDevelopers;
 import com.github.cob.inventories.items.ItemExit;
 import com.github.cob.inventories.items.ItemPluginDetails;
+import com.github.cob.inventories.items.ItemPluginMenuBack;
 
 public class PluginMenu extends Inventory {
 	
@@ -16,6 +17,7 @@ public class PluginMenu extends Inventory {
 		this.addMenuItem(new ItemAuthors().setItemPosition(0));
 		this.addMenuItem(new ItemDevelopers().setItemPosition(2));
 		this.addMenuItem(new ItemPluginDetails().setItemPosition(4));
+		this.addMenuItem(new ItemPluginMenuBack().setItemPosition(7));
 		this.addMenuItem(new ItemExit().setItemPosition(8));
 	}
 

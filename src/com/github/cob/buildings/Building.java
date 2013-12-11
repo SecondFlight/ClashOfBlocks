@@ -12,6 +12,11 @@ public class Building {
 	private int build_time = 0;
 	private int exp_gained = 0;
 	private int th_req = 1;
+	private int boost_cost = 0;
+	private int prod_rate_phr = 0;
+	private int time_to_fill = 0;
+	private int catch_up_point = 0;
+	
 	
 	public Building(String name) {
 		this.name = name;
@@ -106,5 +111,43 @@ public class Building {
 	public int getTownHallRequirement() {
 		return this.th_req;
 	}
+	
+	public Building setBoostCost(int boost_cost){
+		this.boost_cost = boost_cost;
+		return this;
+	}
+	
+	public int getBoostCost() {
+		return this.boost_cost;
+	}
+	
+	public Building setProdRate(int prod_rate_phr){
+		this.prod_rate_phr =  prod_rate_phr;
+		return this;
+	}
+	
+	public int getProdRate() {
+		return this.prod_rate_phr;
+	}
+	
+	public Building setTimetoFill(int time_to_fill){
+		this.time_to_fill = time_to_fill;
+		return this;
+	}
+	
+	public int getTimetoFill() {
+		return this.time_to_fill;
+	}
+	
+	public Building setCatchUpPoint(int catch_up_point){
+		this.catch_up_point = catch_up_point;
+		return this;
+	}
+	
+	public int getCatchUpPoint() {
+		return this.catch_up_point;
+	}
+	
+	
 	
 }
