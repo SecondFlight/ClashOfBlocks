@@ -27,6 +27,14 @@ public class Trophies {
             trophies.put(player, trophies.get(player) + amount);
         COBAPI.updateStats(player);
     }
+	
+	public void minusTrophies(String player, int amount)
+    {
+        if(trophies.containsKey(player))
+            trophies.put(player, trophies.get(player) - amount);
+        COBAPI.updateStats(player);
+    }
+
 
 
 }

@@ -21,9 +21,12 @@ public class Gems {
 		COBAPI.updateStats(player);
 	}
 	
-	public void minusGems(String player, int amount){
-		
-	}
+	public void minusGems(String player, int amount)
+    {
+        if(gems.containsKey(player))
+            gems.put(player, gems.get(player) - amount);
+        COBAPI.updateStats(player);
+    }
 	
 	public void addGems(String player, int amount)
     {

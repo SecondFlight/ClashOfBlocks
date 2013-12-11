@@ -9,6 +9,7 @@ import com.github.cob.inventories.items.ItemShopDecorations;
 import com.github.cob.inventories.items.ItemShopDefenses;
 import com.github.cob.inventories.items.ItemShopResources;
 import com.github.cob.inventories.items.ItemShopShield;
+import com.github.cob.inventories.items.ItemShopTools;
 
 public class ShopInv extends Inventory{
 	
@@ -24,6 +25,7 @@ public class ShopInv extends Inventory{
 		this.addMenuItem(new ItemShopArmy().setItemPosition(2));
 		this.addMenuItem(new ItemShopDefenses().setItemPosition(3));
 		this.addMenuItem(new ItemShopShield().setItemPosition(4));
+		this.addMenuItem(new ItemShopTools().setItemPosition(5));
 		this.addMenuItem(new ItemExit().setItemPosition(8));
 		
 	}

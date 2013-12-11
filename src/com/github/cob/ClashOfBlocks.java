@@ -1,8 +1,8 @@
 package com.github.cob;
 
 import com.github.cob.command.CommandManager;
-import com.github.cob.commands.Testy;
-import com.github.cob.commands.Testy2;
+import com.github.cob.commands.CommandHelp;
+import com.github.cob.commands.CommandShop;
 import com.github.cob.config.PlayerData;
 import com.github.cob.currency.DarkElixir;
 import com.github.cob.currency.Elixir;
@@ -58,8 +58,8 @@ public class ClashOfBlocks extends JavaPlugin {
 		this.inventoryManager = new InventoryManager();
 		EnumInventories.loadInventories();
         this.commandManager = new CommandManager(this);
-        this.commandManager.registerCommands(new Testy());
-        this.commandManager.registerCommands(new Testy2());
+        this.commandManager.registerCommands(new CommandHelp());
+        this.commandManager.registerCommands(new CommandShop());
         this.commandManager.registerHelp();
 
 		this.playerData.loadPlayers(this.gold, this.elixir, this.darkElixir, this.gems);
