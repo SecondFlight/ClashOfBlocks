@@ -27,6 +27,13 @@ public class Gold {
             gold.put(player, gold.get(player) + amount);
         COBAPI.updateStats(player);
     }
+	
+	public void minusGold(String player, int amount)
+    {
+        if(gold.containsKey(player))
+            gold.put(player, gold.get(player) - amount);
+        COBAPI.updateStats(player);
+    }
 
 
 }
