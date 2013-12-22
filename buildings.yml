@@ -154,6 +154,48 @@ resources:
     build_time: 172800
     exp_gained: 415
     th_req: 7
+  DARK_ELIXIR_STORAGE_1:
+    storage_cap: 10000
+    hp: 2000
+    cost: 600000
+    build_time: 86400
+    exp_gained: 293
+    th_req: 7
+  DARK_ELIXIR_STORAGE_2:
+    storage_cap: 20000
+    hp: 2200
+    cost: 1200000
+    build_time: 172800
+    exp_gained: 415
+    th_req: 7
+  DARK_ELIXIR_STORAGE_3:
+    storage_cap: 40000
+    hp: 2400
+    cost: 1800000
+    build_time: 259200
+    exp_gained: 509
+    th_req: 8
+  DARK_ELIXIR_STORAGE_4:
+    storage_cap: 80000
+    hp: 2600
+    cost: 2400000
+    build_time: 345600
+    exp_gained: 587
+    th_req: 8
+  DARK_ELIXIR_STORAGE_5:
+    storage_cap: 150000
+    hp: 2900
+    cost: 3000000
+    build_time: 432000
+    exp_gained: 657
+    th_req: 9
+  DARK_ELIXIR_STORAGE_6:
+    storage_cap: 200000
+    hp: 3200
+    cost: 3600000
+    build_time: 518400
+    exp_gained: 720
+    th_req: 9
   GOLD_MINE_1:
     cost: 150
     build_time: 60
@@ -188,7 +230,7 @@ resources:
     catch_up_point: 1800
     th_req: 2
   GOLD_MINE_4:
-    cost:1400
+    cost: 1400
     build_time: 3600
     exp_gained: 60
     boost_cost: n/a
@@ -198,5 +240,269 @@ resources:
     time_to_fill: 11250
     catch_up_point: 10800
     th_req: 2
+  GOLD_MINE_5:
+    cost: 3000
+    build_time: 7200
+    exp_gained: 84
+    boost_cost: 4
+    capacity: 10000
+    prod_rate_phr: 1000
+    hp: 590
+    time_to_fill: 36000
+    catch_up_point: 28800
+    th_req: 3
+  GOLD_MINE_6:
+    cost: 7000
+    build_time: 21600
+    exp_gained: 146
+    boost_cost: 5
+    capacity: 20000
+    prod_rate_phr: 1300
+    hp: 610
+    time_to_fill: 55385
+    catch_up_point: 72000
+    th_req: 3
+  GOLD_MINE_7:
+    cost: 14000
+    build_time: 43200
+    exp_gained: 207
+    boost_cost: 6
+    capacity: 30000
+    prod_rate_phr: 1600
+    hp: 630
+    time_to_fill: 67500
+    catch_up_point: 187200
+    th_req: 4
+  GOLD_MINE_8:
+    cost: 28000
+    build_time: 86400
+    exp_gained: 293
+    boost_cost: 7
+    capacity: 50000
+    prod_rate_phr: 1900
+    hp: 660
+    time_to_fill: 94737
+    catch_up_point: 460800
+    th_req: 4
+  GOLD_MINE_9:
+    cost: 56000
+    build_time: 172800
+    exp_gained: 415
+    boost_cost: 8
+    capacity: 75000
+    prod_rate_phr: 2200
+    hp: 680
+    time_to_fill: 122728
+    catch_up_point: 1094400
+    th_req: 5
+  GOLD_MINE_10:
+    cost: 84000
+    build_time:  259200
+    exp_gained: 509
+    boost_cost: 9
+    capacity: 100000
+    prod_rate_phr: 2500
+    hp: 710
+    time_to_fill: 144000
+    catch_up_point: 1900800
+    th_req: 5
+  GOLD_MINE_11:
+    cost: 168000
+    build_time: 345600
+    exp_gained: 587
+    boost_cost: 11
+    capacity: 150000
+    prod_rate_phr: 3000
+    hp: 750
+    time_to_fill: 180000
+    catch_up_point: 1728000
+    th_req: 7
+  ELIXIR_COLLECTOR_1:
+    cost: 150
+    build_time: 60
+    exp_gained: 7
+    boost_cost: n/a
+    capacity: 500
+    prod_rate_phr: 200
+    hp: 400
+    time_to_fill: 9000
+    catch_up_point: n/a
+    th_req: 1
+  ELIXIR_COLLECTOR_2:
+    cost: 300
+    build_time: 300
+    exp_gained:17
+    boost_cost: n/a
+    capacity: 1000
+    prod_rate_phr: 400
+    hp: 450
+    time_to_fill: 9000
+    catch_up_point: 300
+    th_req: 1
+  ELIXIR_COLLECTOR_3:
+    cost: 700
+    build_time: 900
+    exp_gained: 30
+    boost_cost: n/a
+    capacity: 1500
+    prod_rate_phr: 600
+    hp: 500
+    time_to_fill: 9000
+    catch_up_point: 1800
+    th_req: 2
+  ELIXIR_COLLECTOR_4:
+    cost: 1400
+    build_time: 3600
+    exp_gained: 60
+    boost_cost: n/a
+    capacity: 2500
+    prod_rate_phr: 800
+    hp: 550
+    time_to_fill: 11250
+    catch_up_point: 10800
+    th_req: 2
+  ELIXIR_COLLECTOR_5:
+    cost: 3000
+    build_time: 7200
+    exp_gained: 84
+    boost_cost: 4
+    capacity: 10000
+    prod_rate_phr: 1000
+    hp: 590
+    time_to_fill: 36000
+    catch_up_point: 28800
+    th_req: 3
+  ELIXIR_COLLECTOR_6:
+    cost: 7000
+    build_time: 21600
+    exp_gained: 146
+    boost_cost: 5
+    capacity: 20000
+    prod_rate_phr: 1300
+    hp: 610
+    time_to_fill: 55385
+    catch_up_point: 72000
+    th_req: 3
+  ELIXIR_COLLECTOR_7:
+    cost: 14000
+    build_time: 43200
+    exp_gained: 207
+    boost_cost: 6
+    capacity: 30000
+    prod_rate_phr: 1600
+    hp: 630
+    time_to_fill: 67500
+    catch_up_point: 187200
+    th_req: 4
+  ELIXIR_COLLECTOR_8:
+    cost: 28000
+    build_time: 86400
+    exp_gained: 293
+    boost_cost: 7
+    capacity: 50000
+    prod_rate_phr: 1900
+    hp: 660
+    time_to_fill: 94737
+    catch_up_point: 460800
+    th_req: 4
+  ELIXIR_COLLECTOR_9:
+    cost: 56000
+    build_time: 172800
+    exp_gained: 415
+    boost_cost: 8
+    capacity: 75000
+    prod_rate_phr: 2200
+    hp: 680
+    time_to_fill: 122728
+    catch_up_point: 1094400
+    th_req: 5
+  ELIXIR_COLLECTOR_10:
+    cost: 84000
+    build_time:  259200
+    exp_gained: 509
+    boost_cost: 9
+    capacity: 100000
+    prod_rate_phr: 2500
+    hp: 710
+    time_to_fill: 144000
+    catch_up_point: 1900800
+    th_req: 5
+  ELIXIR_COLLECTOR_11:
+    cost: 168000
+    build_time: 345600
+    exp_gained: 587
+    boost_cost: 11
+    capacity: 150000
+    prod_rate_phr: 3000
+    hp: 750
+    time_to_fill: 180000
+    catch_up_point: 1728000
+    th_req: 7
+  DARK_ELIXIR_DRILL_1:
+    cost: 1000000
+    build_time: 86400
+    exp_gained: 293
+    boost_cost: 7
+    capacity: 120
+    prod_rate_phr: 20
+    hp: 400
+    time_to_fill: 21600
+    catch_up_point: n/a
+    th_req: 8
+  DARK_ELIXIR_DRILL_2:
+    cost: 1500000
+    build_time: 172800
+    exp_gained: 415
+    boost_cost: 10
+    capacity: 240
+    prod_rate_phr: 30
+    hp: 480
+    time_to_fill: 28800
+    catch_up_point: 345600
+    th_req: 8
+  DARK_ELIXIR_DRILL_3:
+    cost: 2000000
+    build_time: 259200
+    exp_gained: 509
+    boost_cost: 15
+    capacity: 450
+    prod_rate_phr: 45
+    hp: 580
+    time_to_fill: 36000
+    catch_up_point: 518400
+    th_req: 8
+  DARK_ELIXIR_DRILL_4:
+    cost: 3000000
+    build_time: 345600
+    exp_gained: 587
+    boost_cost: 20
+    capacity: 720
+    prod_rate_phr: 60
+    hp: 690
+    time_to_fill: 43200
+    catch_up_point: 1036800
+    th_req: 9
+  DARK_ELIXIR_DRILL_5:
+    cost: 4000000
+    build_time: 518400
+    exp_gained: 720
+    boost_cost: 27
+    capacity: 1120
+    prod_rate_phr: 80
+    hp: 830
+    time_to_fill: 50400
+    catch_up_point: 1555200
+    th_req: 9
+  DARK_ELIXIR_DRILL_6:
+    cost: 5000000
+    build_time: 691200
+    exp_gained: 831
+    boost_cost: 34
+    capacity: 1600
+    prod_rate_phr: 100 
+    hp: 1000
+    time_to_fill: 57600
+    catch_up_point: 2764800
+    th_req: 9
 army:
 decorations:
