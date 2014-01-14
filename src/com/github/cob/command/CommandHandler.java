@@ -7,18 +7,61 @@ import java.lang.annotation.Target;
 
 /**
  * @author Richmond Steele
- * @since 11/27/13
- *        All rights Reserved
- *        Please read included LICENSE file
+ * @since 12/16/13
+ * All rights Reserved
+ * Please read included LICENSE file
  */
 @Target(ElementType.METHOD)
 @Retention(RetentionPolicy.RUNTIME)
 public @interface CommandHandler
 {
-    String name();
+    /**
+     * Label of the command
+     * Sub-commands have '.' to split the child from the parent
+     * /test => test
+     * /test set => test.set
+     *
+     * @return command label
+     */
+    String command();
+
+    /**
+     * Aliases of the command
+     * /test2 => /test
+     * /test set2 => /test set
+     *
+     * @return command aliases
+     */
     String[] aliases() default {};
-    String description() default "";
-    String usage() default "";
+
+    /**
+     * Permission to use this command
+     *
+     * @return permission
+     */
     String permission() default "";
-    String noPermission() default "";
+
+    /**
+     * Message to send to CommandSender if they do not have permission to use this command
+     *
+     * @return noPermission message
+     */
+    String noPermission() default "You don't have permission to do that.";
+
+    /**
+     * Usage for the command
+     * /test
+     * /test set [player]
+     *
+     * @return command usage
+     */
+    String usage() default "";
+
+    /**
+     * Description of command
+     * /test => Testing the dynamic CommandAPI
+     *
+     * @return command description
+     */
+    String description() default "";
 }
