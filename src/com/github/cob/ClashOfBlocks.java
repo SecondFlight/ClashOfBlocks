@@ -1,6 +1,5 @@
 package com.github.cob;
 
-import com.github.cob.command.CommandManager;
 import com.github.cob.config.PlayerData;
 import com.github.cob.currency.DarkElixir;
 import com.github.cob.currency.Elixir;
@@ -11,6 +10,7 @@ import com.github.cob.listeners.FirstJoinListener;
 import com.github.cob.listeners.MenuClickListener;
 import com.github.cob.utils.InventoryManager;
 import com.github.cob.utils.PlayerSaver;
+import com.not2excel.api.command.CommandManager;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -24,9 +24,9 @@ import java.io.File;
 
 public class ClashOfBlocks extends JavaPlugin
 {
-    private static ClashOfBlocks                            instance;
-    private        CommandManager commandManager;
-    private        InventoryManager                         inventoryManager;
+    private static ClashOfBlocks    instance;
+    private        CommandManager   commandManager;
+    private        InventoryManager inventoryManager;
 
 
     private PlayerData playerData          = new PlayerData();
