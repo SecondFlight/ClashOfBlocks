@@ -100,9 +100,14 @@ public class ClashOfBlocks extends JavaPlugin
 		return this.playerData;
 	}
 	
-	public boolean isInteger(String str) {
-	    return str.matches("^-?[0-9]+(\\.[0-9]+)?$");
-	}
+	public boolean isInteger(String string) {
+        try {
+            Integer.parseInt(string);
+            return true;
+        } catch (NumberFormatException nfe) {
+            return false;
+        }
+    }
 	
 	public Gold getGold() {
 		return this.gold;
