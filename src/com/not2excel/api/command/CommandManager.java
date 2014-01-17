@@ -26,10 +26,10 @@ import java.util.concurrent.ConcurrentHashMap;
 /**
  * @author Richmond Steele
  * @since 12/17/13 All rights Reserved Please read included LICENSE file
+ * @version 1.1
  */
 public class CommandManager
 {
-    private final double version = 1.1;
     private final Plugin plugin;
     private final Map<Integer, List<QueuedCommand>> queuedCommands     =
             new ConcurrentHashMap<Integer, List<QueuedCommand>>();
@@ -71,13 +71,12 @@ public class CommandManager
                    + "classes that do not use the default constructor.");
         logger.log("SOLUTION: Please use the static registrar registerCommands(object) if you need to register "
 				+ "commands from classes that do not use the default constructor.");
-		Class[] classes = ClassEnumerator.getInstance().getClassesFromThisJar(
-				plugin);
+		Class<?>[] classes = ClassEnumerator.getInstance().getClassesFromThisJar(plugin);
 		if (classes == null || classes.length == 0)
 		{
 			return;
 		}
-		for (Class c : classes)
+		for (Class<?> c : classes)
 		{
 			try
 			{

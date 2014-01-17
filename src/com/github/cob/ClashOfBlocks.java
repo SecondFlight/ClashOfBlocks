@@ -5,35 +5,33 @@ import com.github.cob.currency.DarkElixir;
 import com.github.cob.currency.Elixir;
 import com.github.cob.currency.Gems;
 import com.github.cob.currency.Gold;
+import com.github.cob.currency.Trophies;
 import com.github.cob.enums.EnumInventories;
 import com.github.cob.listeners.FirstJoinListener;
 import com.github.cob.listeners.MenuClickListener;
 import com.github.cob.utils.InventoryManager;
 import com.github.cob.utils.PlayerSaver;
 import com.not2excel.api.command.CommandManager;
+
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.File;
 
-//import com.github.cob.listeners.inventory.AdminHelpInvLis;
-//import com.github.cob.listeners.inventory.MainHelpInvLis;
-//import com.github.cob.listeners.inventory.PlayerHelpInvLis;
-//import com.github.cob.listeners.inventory.PluginDetailsInvLis;
-
 
 public class ClashOfBlocks extends JavaPlugin
 {
-    private static ClashOfBlocks    instance;
-    private        CommandManager   commandManager;
-    private        InventoryManager inventoryManager;
+    private static ClashOfBlocks instance;
+    private CommandManager commandManager;
+    private InventoryManager inventoryManager;
 
 
-    private PlayerData playerData          = new PlayerData();
-    private Gold       gold                = new Gold();
-    private DarkElixir darkElixir          = new DarkElixir();
-    private Elixir     elixir              = new Elixir();
-    private Gems       gems                = new Gems();
+    private PlayerData playerData = new PlayerData();
+    private Gold gold = new Gold();
+    private DarkElixir darkElixir = new DarkElixir();
+    private Elixir elixir = new Elixir();
+    private Gems gems = new Gems();
+    private Trophies trophies = new Trophies();
     private String[][] defaultConfigValues = new String[][]{
             {"general.filetype", "flatfile"},
             {"general.save-interval", "300"}, // Is loaded as seconds
@@ -58,16 +56,13 @@ public class ClashOfBlocks extends JavaPlugin
         this.commandManager.registerCommands();
         this.commandManager.registerHelp();
 
-        this.playerData.loadPlayers(this.gold, this.elixir, this.darkElixir, this.gems);
-        this.getServer().getScheduler().scheduleSyncRepeatingTask(this, new PlayerSaver(this.gold, this.elixir,
-                                                                                        this.darkElixir, this.gems), 0,
-                                                                  (this.getConfig().getInt("general.save-interval") *
-                                                                   20));
+        this.playerData.loadPlayers(this.gold, this.elixir, this.darkElixir, this.gems, this.trophies);
+        this.getServer().getScheduler().scheduleSyncRepeatingTask(this, new PlayerSaver(this.gold, this.elixir, this.darkElixir, this.gems, this.trophies), 0, (this.getConfig().getInt("general.save-interval") * 20));
     }
 
     public void onDisable()
     {
-        this.playerData.savePlayers(this.gold, this.elixir, this.darkElixir, this.gems);
+        this.playerData.savePlayers(this.gold, this.elixir, this.darkElixir, this.gems, this.trophies);
 	}
 
 	public static ClashOfBlocks getInstance()
@@ -100,9 +95,14 @@ public class ClashOfBlocks extends JavaPlugin
 		return this.playerData;
 	}
 	
-	public boolean isInteger(String str) {
-	    return str.matches("^-?[0-9]+(\\.[0-9]+)?$");
-	}
+	public boolean isInteger(String string) {
+        try {
+            Integer.parseInt(string);
+            return true;
+        } catch (NumberFormatException nfe) {
+            return false;
+        }
+    }
 	
 	public Gold getGold() {
 		return this.gold;
@@ -123,7 +123,7 @@ public class ClashOfBlocks extends JavaPlugin
     public CommandManager getCommandManager()
     {
         if (commandManager == null)
-        { return new CommandManager(this); }
+        	return new CommandManager(this);
         return commandManager;
     }
     

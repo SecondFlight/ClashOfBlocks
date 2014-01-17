@@ -50,7 +50,6 @@ public class ClassEnumerator
      *         directory to parse
      * @return class array
      */
-    @SuppressWarnings("ConstantConditions")
     public List<Class<?>> getClassesFromLocation(File location)
     {
         final List<Class<?>> classes = new ArrayList<Class<?>>();
@@ -122,7 +121,8 @@ public class ClassEnumerator
      *
      * @return class array
      */
-    public Class[] getClassesFromThisJar(Object object)
+    @SuppressWarnings("resource")
+	public Class<?>[] getClassesFromThisJar(Object object)
     {
         final List<Class<?>> classes = new ArrayList<Class<?>>();
         ClassLoader classLoader = null;
@@ -130,9 +130,7 @@ public class ClassEnumerator
         try
         {
             uri = object.getClass().getProtectionDomain().getCodeSource().getLocation().toURI();
-            classLoader = new URLClassLoader(
-                    new URL[]{uri.toURL()},
-                    ClassEnumerator.class.getClassLoader());
+            classLoader = new URLClassLoader(new URL[]{uri.toURL()}, ClassEnumerator.class.getClassLoader());
         }
         catch (URISyntaxException e)
         {
@@ -194,61 +192,5 @@ public class ClassEnumerator
             e.printStackTrace();
         }
         return classes;
-    }
-
-    /**
-     * Processes a directory and retrieves all classes from it and its subdirectories
-     *
-     * Recurses if necessary
-     *
-     * @deprecated Currently not used, getClassesFromLocation replaces this
-     * @param directory
-     *         directory file to traverse
-     * @return list of classes
-     */
-    @Deprecated
-    @SuppressWarnings({"unused", "deprecation"})
-    private List<Class<?>> processDirectory(File directory, String append)
-    {
-        final List<Class<?>> classes = new ArrayList<Class<?>>();
-        String[] files = directory.list();
-        for (String fileName : files)
-        {
-            String className = null;
-            if (fileName.endsWith(".class"))
-            {
-                className = append + '.' + fileName.replace(".class", "");
-            }
-            if (className != null)
-            {
-                classes.add(loadClass(className.substring(1)));
-            }
-            File subdir = new File(directory, fileName);
-            if (subdir.isDirectory())
-            {
-                classes.addAll(processDirectory(subdir, append + "." + fileName));
-            }
-        }
-        return classes;
-    }
-
-    /**
-     * Loads a class based upon the name
-     * Simple wrapper that catches ClassNotFoundException
-     *
-     * @param className
-     *         name of class (.class is pre removed)
-     * @return Class if it was loaded properly
-     */
-    private Class<?> loadClass(String className)
-    {
-        try
-        {
-            return Class.forName(className);
-        }
-        catch (ClassNotFoundException e)
-        {
-            throw new RuntimeException("Error loading class '" + className + "'");
-        }
     }
 }

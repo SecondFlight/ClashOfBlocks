@@ -1,7 +1,7 @@
-package not2excel.api.command.handler;
+package com.github.cob.command.handler;
 
-import not2excel.api.command.objects.CommandInfo;
-import not2excel.api.exceptions.CommandException;
+import com.not2excel.api.command.objects.CommandInfo;
+import com.not2excel.api.exceptions.CommandException;
 
 /**
  * @author Richmond Steele

@@ -4,8 +4,8 @@ import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.event.inventory.InventoryClickEvent;
 
-import com.github.cob.ClashOfBlocks;
-import com.github.cob.currency.Gems;
+//import com.github.cob.ClashOfBlocks;
+//import com.github.cob.currency.Gems;
 import com.github.cob.inventories.MenuItem;
 
 public class ItemShield05 extends MenuItem{
