@@ -9,7 +9,6 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 
-import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -22,11 +21,11 @@ import java.util.Map.Entry;
  * All rights Reserved
  * Please read included LICENSE file
  */
-public class RegisteredCommand extends ParentCommand implements CommandExecutor, Handler
+public class RegisteredCommand extends ParentCommand implements CommandExecutor
 {
     private final QueuedCommand queuedCommand;
-    private String  command = "";
-    private Handler handler = this;
+    private String command = "";
+    private Handler handler;
 
     public RegisteredCommand(QueuedCommand queuedCommand)
     {
@@ -37,13 +36,14 @@ public class RegisteredCommand extends ParentCommand implements CommandExecutor,
     @Override
     public boolean onCommand(CommandSender sender, Command command, String s, String[] args)
     {
+
+//        processCommand(sender, command, s, args);
         try
         {
-            CommandHandler commandHandler = getMethod().getAnnotation(CommandHandler.class);
             List<String> strings = Arrays.asList(args);
-            getHandler().handleCommand(new CommandInfo(this, this, commandHandler, sender, s,
-                                                       sortQuotedArgs(strings), commandHandler.usage(),
-                                                       commandHandler.permission()));
+
+            getHandler().handleCommand(new CommandInfo(this, this, getCommandHandler(), sender, s,
+                                                       strings, getCommand(), getPermission()));
         }
         catch (CommandException e)
         {
@@ -52,24 +52,7 @@ public class RegisteredCommand extends ParentCommand implements CommandExecutor,
         return true;
     }
 
-    @Override
-    public void handleCommand(CommandInfo info) throws CommandException
-    {
-        try
-        {
-            this.getMethod().invoke(queuedCommand.getObject(), info);
-        }
-        catch (IllegalAccessException e)
-        {
-            e.printStackTrace();
-        }
-        catch (InvocationTargetException e)
-        {
-            e.printStackTrace();
-        }
-    }
-
-    public void displayDefaultUsage(CommandSender sender, String command, ParentCommand parentCommand)
+    public void displayDefaultUsage(CommandSender sender, String command, ParentCommand parent)
     {
         String prefix;
         Colorizer.send(sender, "<cyan><=====EXceL Command API=====>");
@@ -81,31 +64,39 @@ public class RegisteredCommand extends ParentCommand implements CommandExecutor,
         else
         {
             Colorizer.send(sender, "<purple>Usage for '%s'", command);
-            prefix = recursivelyAddToPrefix(getCommand(), command);
+            prefix = recursivelyAddToPrefix(getCommand(), this, command);
         }
-        recursivelyDisplayChildUsage(sender, parentCommand, prefix);
+        if(parent != null)
+        {
+            recursivelyDisplayChildUsage(sender, parent, prefix);
+        }
     }
 
-    public String recursivelyAddToPrefix(String prefix, String command)
+    public String recursivelyAddToPrefix(String prefix, ParentCommand parent, String command)
     {
-        for (Entry<String, ChildCommand> entry : getChildCommands().entrySet())
+        for (Entry<String, ChildCommand> entry : parent.getChildCommands().entrySet())
         {
             if (entry.getKey().equals(command))
             {
                 prefix = prefix + " " + command;
+                return prefix;
             }
             else
             {
+                if(!entry.getKey().startsWith(prefix + " " + command))
+                {
+                    continue;
+                }
                 prefix = prefix + " " + entry.getKey();
-                recursivelyAddToPrefix(prefix, command);
+                recursivelyAddToPrefix(prefix, entry.getValue(), command);
             }
         }
         return prefix;
     }
 
-    public void recursivelyDisplayChildUsage(CommandSender sender, ParentCommand parentCommand, String prefix)
+    public void recursivelyDisplayChildUsage(CommandSender sender, ParentCommand parent, String prefix)
     {
-        for (Entry<String, ChildCommand> entry : parentCommand.getChildCommands().entrySet())
+        for (Entry<String, ChildCommand> entry : parent.getChildCommands().entrySet())
         {
             String usage = entry.getValue().getUsage();
             String description = entry.getValue().getDescription();
@@ -126,7 +117,7 @@ public class RegisteredCommand extends ParentCommand implements CommandExecutor,
     private List<String> sortEnclosedArgs(List<String> args, char c)
     {
         List<String> strings = new ArrayList<String>(args.size());
-        for (int i = 0; i < args.size(); ++i)
+        for (int i = 1; i < args.size(); ++i)
         {
             String arg = args.get(i);
             if (arg.length() == 0)
@@ -137,13 +128,12 @@ public class RegisteredCommand extends ParentCommand implements CommandExecutor,
             {
                 int j;
                 final StringBuilder builder = new StringBuilder();
-                for (j = i; j < args.size(); ++j)
+                for (j = i + 1; j < args.size(); ++j)
                 {
                     String arg2 = args.get(j);
-                    if (arg2.charAt(arg2.length() - 1) == c && arg2.length() >= 1)
+                    if (arg2.charAt(arg2.length() - 1) == c && arg2.length() > 1)
                     {
                         builder.append(j != i ? " " : "").append(arg2.substring(j == i ? 1 : 0, arg2.length() - 1));
-                        break;
                     }
                     else
                     {
@@ -163,12 +153,26 @@ public class RegisteredCommand extends ParentCommand implements CommandExecutor,
 
     private Method getMethod()
     {
-        return queuedCommand.getMethod();
+        if(queuedCommand == null)
+        {
+            return null;
+        }
+        else
+        {
+            return queuedCommand.getMethod();
+        }
     }
 
     public CommandHandler getCommandHandler()
     {
-        return getMethod().getAnnotation(CommandHandler.class);
+        if(getMethod() == null)
+        {
+            return null;
+        }
+        else
+        {
+            return getMethod().getAnnotation(CommandHandler.class);
+        }
     }
 
     public Handler getHandler()
@@ -183,7 +187,7 @@ public class RegisteredCommand extends ParentCommand implements CommandExecutor,
 
     public String getPermission()
     {
-        if (queuedCommand == null)
+        if(getCommandHandler() == null)
         {
             return "";
         }
@@ -195,7 +199,7 @@ public class RegisteredCommand extends ParentCommand implements CommandExecutor,
 
     public String getCommand()
     {
-        if (queuedCommand == null)
+        if(getCommandHandler() == null)
         {
             return command;
         }

@@ -107,7 +107,7 @@ public class DefaultHandler implements Handler
                 }
                 CommandInfo cmdInfo = new CommandInfo(info.getRegisteredCommand(), child, child.getCommandHandler(),
                                                       info.getSender(), strings.get(0),
-                                                      strings.subList(1, strings.size() - 1),
+                                                      strings.subList(1, strings.size()),
                                                       info.getUsage(),
                                                       info.getPermission());
                 try

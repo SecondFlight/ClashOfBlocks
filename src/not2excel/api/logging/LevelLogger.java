@@ -1,5 +1,7 @@
 package not2excel.api.logging;
 
+import com.not2excel.api.logging.LogType;
+
 /**
  * @author Richmond Steele
  * @since 12/18/13
