@@ -2,8 +2,6 @@ package com.github.cob.currency;
 
 import java.util.HashMap;
 
-import org.bukkit.entity.Player;
-
 import com.github.cob.api.COBAPI;
 
 public class DarkElixir {
