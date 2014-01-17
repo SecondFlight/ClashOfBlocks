@@ -50,7 +50,6 @@ public class ClassEnumerator
      *         directory to parse
      * @return class array
      */
-    @SuppressWarnings("ConstantConditions")
     public List<Class<?>> getClassesFromLocation(File location)
     {
         final List<Class<?>> classes = new ArrayList<Class<?>>();
@@ -122,7 +121,7 @@ public class ClassEnumerator
      *
      * @return class array
      */
-    public Class[] getClassesFromThisJar(Object object)
+    public Class<?>[] getClassesFromThisJar(Object object)
     {
         final List<Class<?>> classes = new ArrayList<Class<?>>();
         ClassLoader classLoader = null;
@@ -130,9 +129,7 @@ public class ClassEnumerator
         try
         {
             uri = object.getClass().getProtectionDomain().getCodeSource().getLocation().toURI();
-            classLoader = new URLClassLoader(
-                    new URL[]{uri.toURL()},
-                    ClassEnumerator.class.getClassLoader());
+            classLoader = new URLClassLoader(new URL[]{uri.toURL()}, ClassEnumerator.class.getClassLoader());
         }
         catch (URISyntaxException e)
         {

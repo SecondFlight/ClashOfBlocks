@@ -43,4 +43,24 @@ public class Town {
 		return this.shieldExpireStamp;
 	}
 	
+	public int getPosX() {
+		return this.posX;
+	}
+	
+	public int getPosY() {
+		return this.posY;
+	}
+	
+	public int getPosZ() {
+		return this.posZ;
+	}
+	
+	public int getWidth() {
+		return this.width;
+	}
+	
+	public int getHeight() {
+		return this.height;
+	}
+	
 }
