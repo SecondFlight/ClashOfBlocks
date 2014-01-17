@@ -171,7 +171,6 @@ public class CommandManager
 							abstractCmd.setUsage("/" + list[0] + " <command>");
 							abstractCmd.setExecutor(registeredEmpty);
 							registerBaseCommand(abstractCmd);
-							continue;
 						}
 						registered = registeredCommands.get(list[0]);
 					}
@@ -191,6 +190,7 @@ public class CommandManager
 			CommandHandler commandHandler, RegisteredCommand registered,
 			String s)
 	{
+        logger.log("Processing Queued Command: " + commandHandler.command());
 		ChildCommand child = new ChildCommand(commandHandler);
 		ParentCommand parentCommand = recursivelyFindInnerMostParent(
 				commandHandler.command(), registered, 1);
@@ -204,12 +204,11 @@ public class CommandManager
 		}
 		if (parentCommand.getClass().equals(registered.getClass()))
 		{
-			if (!registered.getCommandHandler().command()
+			if (!registered.getCommand()
 					.equals(list[list.length - 2 <= 0 ? 0 : list.length - 2]))
 			{
 				List<String> indexer = Arrays.asList(list);
-				int index = indexer.indexOf(registered.getCommandHandler()
-						.command());
+				int index = indexer.indexOf(registered.getCommand());
 				String s1 = list[index + 1];
 				DefaultChildCommand dummyChild = new DefaultChildCommand(s1);
 				dummyChild.setPermission(registered.getPermission());
@@ -239,8 +238,7 @@ public class CommandManager
 					list[list.length - 2 <= 0 ? 0 : list.length - 2]))
 			{
 				List<String> indexer = Arrays.asList(list);
-				int index = indexer.indexOf(registered.getCommandHandler()
-						.command());
+				int index = indexer.indexOf(registered.getCommand());
 				String s1 = list[index + 1];
 				DefaultChildCommand dummyChild = new DefaultChildCommand(s1);
 				dummyChild.setPermission(childParent.getPermission());
@@ -270,8 +268,7 @@ public class CommandManager
 					list[list.length - 2 <= 0 ? 0 : list.length - 2]))
 			{
 				List<String> indexer = Arrays.asList(list);
-				int index = indexer.indexOf(registered.getCommandHandler()
-						.command());
+				int index = indexer.indexOf(registered.getCommand());
 				String s1 = list[index + 1];
 				DefaultChildCommand dummyChild = new DefaultChildCommand(s1);
 				dummyChild.setPermission(childParent.getPermission());

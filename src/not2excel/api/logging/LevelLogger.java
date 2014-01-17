@@ -1,4 +1,6 @@
-package com.github.cob.utils.logging;
+package not2excel.api.logging;
+
+import com.not2excel.api.logging.LogType;
 
 /**
  * @author Richmond Steele
