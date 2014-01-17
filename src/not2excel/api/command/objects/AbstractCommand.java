@@ -1,4 +1,4 @@
-package com.github.cob.command.objects;
+package not2excel.api.command.objects;
 
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;

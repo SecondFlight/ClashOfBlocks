@@ -1,4 +1,4 @@
-package com.github.cob.command.objects;
+package not2excel.api.command.objects;
 
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
@@ -9,7 +9,7 @@ import java.util.concurrent.ConcurrentHashMap;
  * All rights Reserved
  * Please read included LICENSE file
  */
-public class Parent
+public class ParentCommand
 {
     protected final Map<String, ChildCommand> childCommands = new ConcurrentHashMap<String, ChildCommand>();
 
@@ -38,5 +38,10 @@ public class Parent
         {
             return childCommands.get(s.toLowerCase());
         }
+    }
+
+    public Map<String, ChildCommand> getChildCommands()
+    {
+        return childCommands;
     }
 }

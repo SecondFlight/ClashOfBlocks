@@ -1,4 +1,4 @@
-package com.github.cob.utils.logging;
+package not2excel.api.logging;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;

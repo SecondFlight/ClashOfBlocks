@@ -1,6 +1,6 @@
-package com.github.cob.utils.logging;
+package not2excel.api.logging;
 
-import com.github.cob.utils.StringUtil;
+import not2excel.api.util.StringUtil;
 
 /**
  * @author Richmond Steele

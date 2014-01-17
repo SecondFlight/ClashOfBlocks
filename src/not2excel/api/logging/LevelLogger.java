@@ -1,4 +1,4 @@
-package com.github.cob.utils.logging;
+package not2excel.api.logging;
 
 /**
  * @author Richmond Steele

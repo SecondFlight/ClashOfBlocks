@@ -1,12 +1,12 @@
-package com.github.cob.utils;
+package not2excel.api.reflection;
 
 import java.lang.reflect.Field;
 
 /**
  * @author Richmond Steele
- * @since 11/26/13
- *        All rights Reserved
- *        Please read included LICENSE file
+ * @since 12/17/13
+ * All rights Reserved
+ * Please read included LICENSE file
  */
 public class ReflectionUtils
 {
