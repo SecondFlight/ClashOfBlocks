@@ -55,7 +55,7 @@ public class RegisteredCommand extends ParentCommand implements CommandExecutor
     public void displayDefaultUsage(CommandSender sender, String command, ParentCommand parent)
     {
         String prefix;
-        Colorizer.send(sender, "<cyan><=====EXceL Command API=====>");
+//        Colorizer.send(sender, "<cyan><=====EXceL Command API=====>");
         if (command.equals(getCommand()))
         {
             Colorizer.send(sender, "<purple>Usage: /%s", command);
