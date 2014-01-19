@@ -9,6 +9,7 @@ import com.github.cob.currency.Trophies;
 import com.github.cob.enums.EnumInventories;
 import com.github.cob.listeners.FirstJoinListener;
 import com.github.cob.listeners.MenuClickListener;
+import com.github.cob.resolvers.PlayerResolver;
 import com.github.cob.utils.InventoryManager;
 import com.github.cob.utils.PlayerSaver;
 import com.not2excel.api.command.CommandManager;
@@ -25,6 +26,11 @@ public class ClashOfBlocks extends JavaPlugin
     private CommandManager commandManager;
     private InventoryManager inventoryManager;
 
+    //*************************//
+    //Resolvers
+    private PlayerResolver playerResolver;
+    //*************************//
+
 
     private PlayerData playerData = new PlayerData();
     private Gold gold = new Gold();
@@ -40,6 +46,8 @@ public class ClashOfBlocks extends JavaPlugin
 
     public void onEnable()
     {
+
+        this.playerResolver = new PlayerResolver();
 
         this.setInstance(this);
 
@@ -102,6 +110,10 @@ public class ClashOfBlocks extends JavaPlugin
         } catch (NumberFormatException nfe) {
             return false;
         }
+    }
+
+    public PlayerResolver getPlayerResolver() {
+        return playerResolver;
     }
 	
 	public Gold getGold() {
