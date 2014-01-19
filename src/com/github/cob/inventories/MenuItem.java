@@ -8,10 +8,13 @@ import org.bukkit.Material;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
+import org.bukkit.potion.Potion;
 
 public class MenuItem {
 	
-	private ItemStack item;
+	private ItemStack item = null;
+	private Potion potion = null;
+	private int amount = 1;
 	private int itemPosition = 0;
 	
 	public MenuItem(Material item, int amount, String name) {
@@ -27,7 +30,24 @@ public class MenuItem {
 		this(item, "");
 	}
 	
+	public MenuItem(Potion potion, int amount, String name) {
+		this.potion = potion;
+		this.amount = amount;
+		this.setName(name);
+	}
+	
+	public MenuItem(Potion potion, String name) {
+		this(potion, 1, name);
+	}
+	
+	public MenuItem(Potion potion) {
+		this(potion, 1, "");
+	}
+	
 	public ItemStack getItem() {
+		if (this.potion != null) {
+			return this.potion.toItemStack(this.amount);
+		}
 		return this.item;
 	}
 	
