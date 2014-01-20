@@ -11,16 +11,13 @@ import org.bukkit.entity.Player;
 public class CommandShop implements CommandListener
 {
 
-    @CommandHandler(command = "cob.shop")
+    @CommandHandler(command = "cob.shop" , permission = "cob.shop")
     public void shopCommand(CommandInfo args)
     {
         Player p = args.getPlayer();
         if (p == null)
         { return; }
-        if (!p.hasPermission("cob.shop"))
-        {
-            p.sendMessage(ChatColor.DARK_RED + "You do not have permission to do that");
-        }
+        
         p.openInventory(EnumInventories.SHOP_MENU.getInventory().getInventory());
     }
 
