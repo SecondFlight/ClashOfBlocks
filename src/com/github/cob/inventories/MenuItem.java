@@ -84,6 +84,7 @@ public class MenuItem {
 		return this.itemPosition;
 	}
 	
+	
 	public void onClick(InventoryClickEvent event) {}
 	
 }

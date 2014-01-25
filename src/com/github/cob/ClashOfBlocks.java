@@ -9,6 +9,7 @@ import com.github.cob.currency.Trophies;
 import com.github.cob.enums.EnumInventories;
 import com.github.cob.listeners.FirstJoinListener;
 import com.github.cob.listeners.MenuClickListener;
+import com.github.cob.spells.LightningSpell;
 import com.github.cob.utils.InventoryManager;
 import com.github.cob.utils.PlayerSaver;
 import com.not2excel.api.command.CommandManager;
@@ -48,6 +49,7 @@ public class ClashOfBlocks extends JavaPlugin
 
         pm.registerEvents(new MenuClickListener(), this);
         pm.registerEvents(new FirstJoinListener(), this);
+        pm.registerEvents(new LightningSpell(), this);
 
         //register the commands from different objects
         this.inventoryManager = new InventoryManager();

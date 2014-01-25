@@ -15,8 +15,10 @@ public class ItemPlayerHelp extends MenuItem {
 	}
 	
 	public void onClick(InventoryClickEvent event) {
-		event.getWhoClicked().closeInventory();
-		event.getWhoClicked().openInventory(EnumInventories.PLAYER_HELP.getInventory().getInventory());
+		if(event.getInventory().getName().equals(ChatColor.GOLD+ ChatColor.BOLD.toString()+"COB: " +ChatColor.RESET + ChatColor.DARK_GREEN +"Help Menu")){
+			event.getWhoClicked().closeInventory();
+			event.getWhoClicked().openInventory(EnumInventories.PLAYER_HELP.getInventory().getInventory());
+		}
 	}
 	
 }

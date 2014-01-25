@@ -16,16 +16,16 @@ import com.github.cob.currency.Gold;
 public class COBAPI {
 	
 	private static String[] info = new String[] {
-			ChatColor.GOLD + "Gold",
+			ChatColor.GOLD+ ChatColor.BOLD.toString() + "Gold",
 			"{$GOLD}§6",
 			"§a",
-			ChatColor.DARK_PURPLE + "Elixir",
+			ChatColor.DARK_PURPLE+ ChatColor.BOLD.toString() + "Elixir",
 			"{$ELIXIR}§5",
 			"§b",
-			ChatColor.BLACK + "Dark Elixir",
+			ChatColor.BLACK+ ChatColor.BOLD.toString() + "Dark Elixir",
 			"{$DARKELIXIR}§0",
 			"§c",
-			ChatColor.GREEN + "" + ChatColor.BOLD + "Gems",
+			ChatColor.GREEN + ChatColor.BOLD.toString() + "" + "Gems",
 			"{$GEMS}§2"
 	};
 	
@@ -65,5 +65,7 @@ public class COBAPI {
 		toBe = toBe.replace("{$GEMS}", Integer.toString(ge.getGems(player)));
 		return toBe;
 	}
+	
+
 	
 }
