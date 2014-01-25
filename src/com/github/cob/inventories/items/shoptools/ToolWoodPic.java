@@ -41,7 +41,7 @@ public class ToolWoodPic extends MenuItem {
 		pic.addUnsafeEnchantment(Enchantment.LOOT_BONUS_BLOCKS, 1);
 		
 		event.getWhoClicked().closeInventory();
-		ClashOfBlocks.getInstance().getGems().minusGems(event.getWhoClicked().getName(), 300);
+		ClashOfBlocks.getInstance().getGems().minusGems(event.getWhoClicked().getName(), 25);
 		event.getWhoClicked().getInventory().addItem(pic);
 	}
 

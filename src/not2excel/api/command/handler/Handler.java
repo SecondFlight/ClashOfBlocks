@@ -1,4 +1,4 @@
-package com.github.cob.command.handler;
+package not2excel.api.command.handler;
 
 import com.not2excel.api.command.objects.CommandInfo;
 import com.not2excel.api.exceptions.CommandException;

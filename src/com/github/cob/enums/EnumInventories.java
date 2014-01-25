@@ -11,7 +11,8 @@ public enum EnumInventories {
 	PLAYER_HELP("playerhelp", com.github.cob.inventories.help.PlayerHelpInv.class),
 	SHIELD_MENU("townshield", com.github.cob.inventories.town.TownShieldMenu.class),
 	SHOP_MENU("shopinv", com.github.cob.inventories.shop.ShopInv.class),
-	TOOLS_SHOP("toolsshopinv", com.github.cob.inventories.shop.ToolsShopInv.class);
+	TOOLS_SHOP("toolsshopinv", com.github.cob.inventories.shop.ToolsShopInv.class),
+	SPELL_FACTORY("spellfactoryinv", com.github.cob.inventories.army.SpellsInv.class);
 	
 	
 	private String name;
