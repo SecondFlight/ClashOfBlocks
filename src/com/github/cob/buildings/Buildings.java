@@ -5,10 +5,18 @@ import java.io.InputStream;
 
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
+import org.bukkit.block.Block;
+import org.bukkit.block.Sign;
+import org.bukkit.entity.Player;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.Listener;
+import org.bukkit.event.block.Action;
+import org.bukkit.event.block.SignChangeEvent;
+import org.bukkit.event.player.PlayerInteractEvent;
 
 import com.github.cob.ClashOfBlocks;
 
-public class Buildings {
+public class Buildings implements Listener{
 	
 	// Defense
 	
@@ -69,5 +77,48 @@ public class Buildings {
 		
 		return this.$buildings;
 	}
+	@EventHandler
+		public void onSignChange(SignChangeEvent e) {
+		  if (e.getLine(0).egualsIgnoreCase("COB") || e.getLine(0).egualsIgnoreCase("[COB]")) {
+		  e.setLine(0, "[COB]");
+		  e.setLine(1, "[BUILD]");
+		  }	
+		}
+		
+		@EventHandler
+		public void onSignChange(SignChangeEvent e) {
+		  if (e.getLine(0).egualsIgnoreCase("COB") || e.getLine(0).egualsIgnoreCase("[COB]")
+		  && e.getLine(1).egualsIgnoreCase("BUILD") 
+		  || e.getLine(1).egualsIgnoreCase("[BUILD]"))
+		  && e.getLine(2).equalsIgnoreCase("[TYPE]"){
+		  e.setLine(0, "[COB]");
+		  e.setLine(1, "[BUILD]");
+		  e.setLine(2, "[MIC]");
+		  }	
+		}
+		
+		@EventHandler
+		public void onPlayerInteract(PlayerInteractEvent e){
+			if(!(e.getAction() == Action.RIGHT_CLICK_BLOCK)) return;
+		if (e.getClickedBlock().getState() instanceof Sign) {
+			Sign s = (Sign) e.getClickedBlock().getState();
+			if (s.getLine(0).equalsIgnoreCase("[COB]") && s.getLine(1).equalsIgnoreCase("[BUILD]")
+			&& e.getLine(2).equalsIgnoreCase("[MIC]"))  {
+			 Player p = (Player) e.getPlayer();
+				p.sendMessage("Do /cob types for the type of builds you can use")
+		
+		@EventHandler
+		public void onPlayerInteract(PlayerInteractEvent e){
+			if(!(e.getAction() == Action.RIGHT_CLICK_BLOCK)) return;
+		if (e.getClickedBlock().getState() instanceof Sign) {
+			Sign s = (Sign) e.getClickedBlock().getState();
+			if (s.getLine(0).equalsIgnoreCase("[COB]") && s.getLine(1).equalsIgnoreCase("[BUILD]"))  {
+			 Player p = (Player) e.getPlayer();
+				p.sendMessage("Please specify what type of build do /cob builds for more info!");
+		}
+	}
+	
+}
+
 	
 }
