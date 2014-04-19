@@ -7,3 +7,4 @@ A Clash of Clans inspired Bukkit plugin developed by:
 * Mineu999 - Developer
 * Joseshooter - Developer
 * DevRosemberg - Developer
+* SecondFlight - Developer/Code Breaker
